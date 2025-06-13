@@ -1,0 +1,37 @@
+{
+  "name": "n8n-nodes-extract-from-document",
+  "version": "0.0.1",
+  "description": "Extracts text content from documents using n8n.",
+  "keywords": [
+    "n8n-community-node-package",
+    "n8n-extract-from-document"
+  ],
+  "homepage": "https://github.com/melvinotieno/n8n-nodes/tree/main/packages/ExtractFromDocument",
+  "bugs": "https://github.com/melvinotieno/n8n-nodes/issues",
+  "license": "MIT",
+  "author": "Melvin Otieno <o.melvinotieno@gmail.com> (https://melvinotieno.com)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/melvinotieno/n8n-nodes/tree/main/packages/ExtractFromDocument"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "tsc --watch",
+    "build": "npx rimraf dist && tsc"
+  },
+  "devDependencies": {
+    "@config/typescript": "workspace:x",
+    "typescript": "^5.8.3"
+  },
+  "peerDependencies": {
+    "n8n-workflow": "*"
+  },
+  "n8n": {
+    "n8nNodesApiVersion": 1,
+    "nodes": [
+      "dist/ExtractFromDocument.node.js"
+    ]
+  }
+}
