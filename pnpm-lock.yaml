@@ -23,20 +23,7 @@ importers:
 
   config/typescript: {}
 
-  packages/ExampleNode:
-    dependencies:
-      n8n-workflow:
-        specifier: '*'
-        version: 1.82.0
-    devDependencies:
-      '@config/typescript':
-        specifier: workspace:*
-        version: link:../../config/typescript
-      typescript:
-        specifier: ^5.8.3
-        version: 5.8.3
-
-  packages/HttpBin:
+  packages/ExtractFiles:
     dependencies:
       n8n-workflow:
         specifier: '*'

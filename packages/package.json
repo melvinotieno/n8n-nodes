@@ -3,13 +3,7 @@
   "private": true,
   "n8n": {
     "n8nNodesApiVersion": 1,
-    "credentials": [
-      "HttpBin/dist/HttpBin.credentials.js",
-      "ExampleNode/dist/ExampleNode.credentials.js"
-    ],
-    "nodes": [
-      "HttpBin/dist/HttpBin.node.js",
-      "ExampleNode/dist/ExampleNode.node.js"
-    ]
+    "credentials": [],
+    "nodes": []
   }
 }
