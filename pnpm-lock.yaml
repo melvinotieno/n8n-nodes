@@ -33,7 +33,7 @@ importers:
         version: 1.82.0
     devDependencies:
       '@config/typescript':
-        specifier: workspace:*
+        specifier: workspace:x
         version: link:../../config/typescript
       typescript:
         specifier: ^5.8.3
