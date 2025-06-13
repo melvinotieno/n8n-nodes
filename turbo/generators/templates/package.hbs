@@ -30,9 +30,11 @@
   },
   "n8n": {
     "n8nNodesApiVersion": 1,
+    {{#if credentials}}
     "credentials": [
       "dist/{{ pascalCase name }}.credentials.js"
     ],
+    {{/if}}
     "nodes": [
       "dist/{{ pascalCase name }}.node.js"
     ]
