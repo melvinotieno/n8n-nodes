@@ -12,8 +12,9 @@
     "build": "turbo run build",
     "lint": "turbo run lint",
     "clean": "turbo run clean && rm -rf node_modules",
-    "format": "pretter --write **/*.ts",
+    "format": "prettier --write **/*.ts",
     "format:check": "prettier --check **/*.ts",
+    "gen:node": "turbo gen n8n-node",
     "release": "turbo run build && changeset version && changeset publish"
   },
   "devDependencies": {
