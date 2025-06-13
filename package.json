@@ -8,10 +8,16 @@
   "packageManager": "pnpm@10.12.1",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
-    "dev": "turbo dev",
-    "build": "turbo build"
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "clean": "turbo run clean && rm -rf node_modules",
+    "format": "pretter --write **/*.ts",
+    "format:check": "prettier --check **/*.ts",
+    "release": "turbo run build && changeset version && changeset publish"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.29.4",
     "@turbo/gen": "^2.5.4",
     "prettier": "^3.5.3",
     "rimraf": "^6.0.1",
