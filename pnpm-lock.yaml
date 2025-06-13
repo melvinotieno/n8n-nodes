@@ -36,19 +36,6 @@ importers:
         specifier: ^5.8.3
         version: 5.8.3
 
-  packages/ExtractFiles:
-    dependencies:
-      n8n-workflow:
-        specifier: '*'
-        version: 1.82.0
-    devDependencies:
-      '@config/typescript':
-        specifier: workspace:*
-        version: link:../../config/typescript
-      typescript:
-        specifier: ^5.8.3
-        version: 5.8.3
-
 packages:
 
   '@babel/runtime-corejs3@7.27.6':
