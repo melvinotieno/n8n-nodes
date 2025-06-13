@@ -6,12 +6,10 @@
     "n8n-community-node-package",
     "n8n-extract-binaries"
   ],
-  "license": "MIT",
   "homepage": "https://github.com/melvinotieno/n8n-nodes/tree/main/packages/ExtractBinaries",
-  "author": {
-    "name": "Melvin Otieno",
-    "email": "o.melvinotieno@gmail.com"
-  },
+  "bugs": "https://github.com/melvinotieno/n8n-nodes/issues",
+  "license": "MIT",
+  "author": "Melvin Otieno <o.melvinotieno@gmail.com> (https://melvinotieno.com)",
   "repository": {
     "type": "git",
     "url": "https://github.com/melvinotieno/n8n-nodes/tree/main/packages/ExtractBinaries"
