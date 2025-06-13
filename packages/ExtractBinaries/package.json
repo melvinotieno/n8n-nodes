@@ -1,0 +1,39 @@
+{
+  "name": "n8n-nodes-extract-binaries",
+  "version": "0.0.1",
+  "description": "Extract binary files from a webhook request in n8n.",
+  "keywords": [
+    "n8n-community-node-package",
+    "n8n-extract-binaries"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/melvinotieno/n8n-nodes/tree/main/packages/ExtractBinaries",
+  "author": {
+    "name": "Melvin Otieno",
+    "email": "o.melvinotieno@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/melvinotieno/n8n-nodes/tree/main/packages/ExtractBinaries"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "tsc --watch",
+    "build": "npx rimraf dist && tsc"
+  },
+  "devDependencies": {
+    "@config/typescript": "workspace:*",
+    "typescript": "^5.8.3"
+  },
+  "peerDependencies": {
+    "n8n-workflow": "*"
+  },
+  "n8n": {
+    "n8nNodesApiVersion": 1,
+    "nodes": [
+      "dist/ExtractBinaries.node.js"
+    ]
+  }
+}

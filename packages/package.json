@@ -4,6 +4,8 @@
   "n8n": {
     "n8nNodesApiVersion": 1,
     "credentials": [],
-    "nodes": []
+    "nodes": [
+      "ExtractBinaries/dist/ExtractBinaries.node.js"
+    ]
   }
 }
