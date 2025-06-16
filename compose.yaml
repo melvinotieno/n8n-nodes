@@ -1,9 +1,14 @@
+# This file is meant to be used for testing purposes only.
+# It should not be used as an example of running n8n in production.
 services:
   n8n:
     image: docker.n8n.io/n8nio/n8n
     volumes:
       - n8n_data:/home/node/.n8n
       - ./packages:/home/node/.n8n/custom
+      # Because we are on a pnpm monorepo (hoists packages), we need to mount
+      # the node_modules folder so that n8n can find installed dependencies.
+      - ./node_modules:/home/node/.n8n/node_modules
     ports:
       - "5678:5678"
 volumes:

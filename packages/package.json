@@ -5,6 +5,7 @@
     "n8nNodesApiVersion": 1,
     "credentials": [],
     "nodes": [
+      "ExtractFromDocument/dist/ExtractFromDocument.node.js",
       "ExtractBinaries/dist/ExtractBinaries.node.js"
     ]
   }

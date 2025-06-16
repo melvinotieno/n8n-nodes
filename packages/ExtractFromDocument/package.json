@@ -1,18 +1,18 @@
 {
-  "name": "n8n-nodes-{{ dashCase name }}",
+  "name": "n8n-nodes-extract-from-document",
   "version": "0.0.1",
-  "description": "",
+  "description": "Extracts text content from documents using n8n.",
   "keywords": [
     "n8n-community-node-package",
-    "n8n-{{ dashCase name }}"
+    "n8n-extract-from-document"
   ],
-  "homepage": "https://github.com/melvinotieno/n8n-nodes/tree/main/packages/{{ pascalCase name }}",
+  "homepage": "https://github.com/melvinotieno/n8n-nodes/tree/main/packages/ExtractFromDocument",
   "bugs": "https://github.com/melvinotieno/n8n-nodes/issues",
   "license": "MIT",
   "author": "Melvin Otieno <o.melvinotieno@gmail.com> (https://melvinotieno.com)",
   "repository": {
     "type": "git",
-    "url": "https://github.com/melvinotieno/n8n-nodes/tree/main/packages/{{ pascalCase name }}"
+    "url": "https://github.com/melvinotieno/n8n-nodes/tree/main/packages/ExtractFromDocument"
   },
   "files": [
     "dist"
@@ -21,8 +21,14 @@
     "dev": "tsc --watch",
     "build": "npx rimraf dist && tsc"
   },
+  "dependencies": {
+    "@xmldom/xmldom": "^0.9.8",
+    "pdfjs-dist": "^5.3.31",
+    "yauzl": "^3.2.0"
+  },
   "devDependencies": {
     "@config/typescript": "workspace:x",
+    "@types/yauzl": "^2.10.3",
     "typescript": "^5.8.3"
   },
   "peerDependencies": {
@@ -30,13 +36,8 @@
   },
   "n8n": {
     "n8nNodesApiVersion": 1,
-    {{#if credentials}}
-    "credentials": [
-      "dist/{{ pascalCase name }}.credentials.js"
-    ],
-    {{/if}}
     "nodes": [
-      "dist/{{ pascalCase name }}.node.js"
+      "dist/ExtractFromDocument.node.js"
     ]
   }
 }
