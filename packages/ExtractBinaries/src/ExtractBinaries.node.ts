@@ -21,18 +21,40 @@ export class ExtractBinaries implements INodeType {
     outputNames: ["Accepted", "Rejected"],
     properties: [
       {
-        displayName: "Mime Types",
-        name: "mimeTypes",
+        displayName: "Output Binary Field",
+        name: "binaryField",
         type: "string",
-        default: "",
-        placeholder: "Add Mime Types (e.g., application/pdf, image/png)",
+        default: "data",
+        required: true,
+        placeholder: "e.g., data",
+        hint: "The name of the field that will contain the extracted binary data",
       },
       {
-        displayName: "Maximum Size (Bytes)",
-        name: "maxSize",
-        type: "number",
-        default: "",
-        placeholder: "0 for no limit",
+        displayName: "Options",
+        name: "options",
+        type: "collection",
+        placeholder: "Add option",
+        default: {},
+        options: [
+          {
+            displayName: "Mime Types",
+            name: "mimeTypes",
+            type: "string",
+            default: "",
+            placeholder: "Add Mime Types (e.g., application/pdf, image/png)",
+            description:
+              "Comma-separated list of allowed MIME types. If empty, all types are accepted.",
+          },
+          {
+            displayName: "Maximum Size (Bytes)",
+            name: "maxSize",
+            type: "number",
+            default: "",
+            placeholder: "0 or negative for no limit",
+            description:
+              "Maximum size of the binary file in bytes. Set to 0 for no limit.",
+          },
+        ],
       },
     ],
   };
@@ -46,12 +68,11 @@ export class ExtractBinaries implements INodeType {
     for (let i = 0; i < items.length; i++) {
       const binary = items[i].binary;
 
-      if (!binary) {
-        continue;
-      }
+      if (!binary) continue;
 
-      const mimeTypes = this.getNodeParameter("mimeTypes", i, "") as string;
-      const maxSize = this.getNodeParameter("maxSize", i, -1) as number;
+      const binaryField = this.getNodeParameter("binaryField", i) as string;
+      const options = this.getNodeParameter("options", i) as IOptions;
+      const { mimeTypes = "", maxSize = -1 } = options;
 
       const mimes = mimeTypes
         .split(",")
@@ -59,14 +80,13 @@ export class ExtractBinaries implements INodeType {
         .filter((type) => Boolean(type));
 
       for (const key in binary) {
-        const file = binary[key];
-
-        const { data, ...metadata } = file;
+        const binaryData = binary[key];
+        const { data, ...metadata } = binaryData;
         const { mimeType, fileSize = "0" } = metadata;
 
         const outputData: INodeExecutionData = {
-          binary: { file },
-          json: { metadata },
+          binary: { [binaryField]: binaryData },
+          json: { metadata, originalBinaryField: key },
         };
 
         const isMimeAllowed = mimes.length === 0 || mimes.includes(mimeType);
