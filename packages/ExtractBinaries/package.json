@@ -1,6 +1,6 @@
 {
   "name": "n8n-nodes-extract-binaries",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Extract binary files from a webhook request in n8n.",
   "keywords": [
     "n8n-community-node-package",

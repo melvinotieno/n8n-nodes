@@ -1,6 +1,6 @@
 {
   "name": "n8n-nodes-extract-from-document",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Extracts text content from documents using n8n.",
   "keywords": [
     "n8n-community-node-package",
