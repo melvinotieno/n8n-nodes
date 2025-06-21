@@ -26,7 +26,7 @@ export class ExtractFromDocument implements INodeType {
     outputs: [NodeConnectionType.Main],
     properties: [
       {
-        displayName: "Binary Field",
+        displayName: "Input Binary Field",
         name: "binaryField",
         type: "string",
         default: "data",
@@ -91,7 +91,10 @@ export class ExtractFromDocument implements INodeType {
       const fn = (await import(`./extractors/${resolvedFileType}`)).default;
       const extract: IExtract = await fn(buffer, options);
 
-      outputData.push({ json: { ...extract } });
+      outputData.push({
+        json: { ...extract },
+        binary: { [binaryField]: binaryData },
+      });
     }
 
     return [outputData];
