@@ -16,6 +16,7 @@
 		"format:fix": "biome format --write .",
 		"check": "biome check .",
 		"check:fix": "biome check --write .",
+    "typecheck": "turbo run typecheck",
     "gen:node": "turbo gen n8n-node",
     "release": "turbo run build && changeset version && changeset publish"
   },

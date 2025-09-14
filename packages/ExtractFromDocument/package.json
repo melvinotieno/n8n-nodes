@@ -19,7 +19,8 @@
   ],
   "scripts": {
     "dev": "tsc --watch",
-    "build": "pnpm rimraf dist && tsc && gulp build:icons"
+    "build": "pnpm rimraf dist && tsc && gulp build:icons",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@xmldom/xmldom": "^0.9.8",
