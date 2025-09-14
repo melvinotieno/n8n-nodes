@@ -4,19 +4,18 @@
 		"ignoreUnknown": false,
 		"includes": [
 			"**",
-			"!**/.turbo",
-			"!**/dist",
 			"!**/package.json"
 		]
 	},
 	"vcs": {
-		"enabled": false,
+		"enabled": true,
 		"clientKind": "git",
 		"useIgnoreFile": true
 	},
 	"formatter": {
 		"enabled": true,
-		"indentStyle": "tab"
+		"indentStyle": "tab",
+		"lineWidth": 100
 	},
 	"linter": {
 		"enabled": true,
