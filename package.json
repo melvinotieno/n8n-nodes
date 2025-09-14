@@ -10,17 +10,19 @@
     "preinstall": "npx only-allow pnpm",
     "dev": "turbo run dev",
     "build": "turbo run build",
-    "clean": "turbo run clean && rm -rf node_modules",
-    "lint": "turbo run lint",
-    "format": "prettier --write **/*.ts",
-    "format:check": "prettier --check **/*.ts",
+    "lint": "biome lint .",
+		"lint:fix": "biome lint --write .",
+		"format": "biome format .",
+		"format:fix": "biome format --write .",
+		"check": "biome check .",
+		"check:fix": "biome check --write .",
     "gen:node": "turbo gen n8n-node",
     "release": "turbo run build && changeset version && changeset publish"
   },
   "devDependencies": {
+    "@biomejs/biome": "2.2.4",
     "@changesets/cli": "^2.29.7",
     "@turbo/gen": "^2.5.6",
-    "prettier": "^3.6.2",
     "rimraf": "^6.0.1",
     "turbo": "^2.5.6"
   }
