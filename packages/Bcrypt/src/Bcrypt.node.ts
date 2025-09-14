@@ -75,7 +75,13 @@ export class Bcrypt implements INodeType {
       const action = this.getNodeParameter("action", i) as string;
       const plainText = this.getNodeParameter("plainText", i) as string;
 
+      // Validate plainText input
+      if (plainText === "" || plainText === null || plainText === undefined) {
+        throw new Error("Plain Text must not be empty or null.");
+      }
+
       if (action === "hash") {
+        // Hash the plain text using bcrypt
         const saltRounds = this.getNodeParameter("saltRounds", i) as number;
         const hash = await bcrypt.hash(plainText, saltRounds);
 
@@ -84,6 +90,10 @@ export class Bcrypt implements INodeType {
         });
       } else if (action === "compare") {
         const hashedText = this.getNodeParameter("hashedText", i) as string;
+
+        // Validate hashedText input
+
+        // Compare plain text with hashed text
         const matches = await bcrypt.compare(plainText, hashedText);
 
         outputData.push({
