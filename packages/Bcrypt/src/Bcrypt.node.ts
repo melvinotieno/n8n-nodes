@@ -8,7 +8,7 @@ export class Bcrypt implements INodeType {
 		icon: "file:Bcrypt.node.svg",
 		group: ["transform"],
 		version: 1,
-		description: "Bcrypt node for n8n",
+		description: "Hash and compare passwords",
 		subtitle: `={{$parameter.action.charAt(0).toUpperCase() + $parameter.action.slice(1)}}`,
 		defaults: {
 			name: "Bcrypt",
