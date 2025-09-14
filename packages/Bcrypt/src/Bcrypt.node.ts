@@ -1,5 +1,4 @@
 import bcrypt from "bcrypt";
-import type { IExecuteFunctions, INodeExecutionData, INodeType, INodeTypeDescription } from "n8n-workflow";
 import { NodeConnectionType, NodeOperationError } from "n8n-workflow";
 
 export class Bcrypt implements INodeType {
@@ -27,12 +26,10 @@ export class Bcrypt implements INodeType {
 					{
 						name: "Hash",
 						value: "hash",
-						action: "Hash",
 					},
 					{
 						name: "Compare",
 						value: "compare",
-						action: "Compare",
 					},
 				],
 			},
@@ -104,12 +101,12 @@ export class Bcrypt implements INodeType {
 						pairedItem: itemIndex,
 					});
 
-          continue;
+					continue;
 				}
 
-        throw new NodeOperationError(this.getNode(), error, {
-          itemIndex,
-        });
+				throw new NodeOperationError(this.getNode(), error, {
+					itemIndex,
+				});
 			}
 		}
 
