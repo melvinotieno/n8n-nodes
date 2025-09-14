@@ -19,11 +19,12 @@
   ],
   "scripts": {
     "dev": "tsc --watch",
-    "build": "npx rimraf dist && tsc"
+    "build": "pnpm rimraf dist && tsc && gulp build:icons"
   },
   "devDependencies": {
-    "@config/typescript": "workspace:x",
-    "typescript": "^5.8.3"
+    "@config/typescript": "workspace:^",
+    "gulp": "^5.0.1",
+    "typescript": "^5.9.2"
   },
   "peerDependencies": {
     "n8n-workflow": "*"

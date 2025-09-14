@@ -1,7 +1,7 @@
 {
   "name": "n8n-nodes-bcrypt",
   "version": "0.0.1",
-  "description": "",
+  "description": "Hash passwords using bcrypt in n8n.",
   "keywords": [
     "n8n-community-node-package",
     "n8n-bcrypt"
@@ -19,15 +19,16 @@
   ],
   "scripts": {
     "dev": "tsc --watch",
-    "build": "npx rimraf dist && tsc"
+    "build": "pnpm rimraf dist && tsc && gulp build:icons"
   },
   "dependencies": {
     "bcrypt": "^6.0.0"
   },
   "devDependencies": {
-    "@config/typescript": "workspace:x",
+    "@config/typescript": "workspace:^",
     "@types/bcrypt": "^6.0.0",
-    "typescript": "^5.8.3"
+    "gulp": "^5.0.1",
+    "typescript": "^5.9.2"
   },
   "peerDependencies": {
     "n8n-workflow": "*"
