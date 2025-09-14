@@ -6,20 +6,20 @@
     "n8n-community-node-package",
     "n8n-bcrypt"
   ],
-  "homepage": "https://github.com/melvinotieno/n8n-nodes/tree/main/packages/Bcrypt",
+  "homepage": "https://github.com/melvinotieno/n8n-nodes/tree/main/packages/BCrypt",
   "bugs": "https://github.com/melvinotieno/n8n-nodes/issues",
   "license": "MIT",
   "author": "Melvin Otieno <o.melvinotieno@gmail.com> (https://melvinotieno.com)",
   "repository": {
     "type": "git",
-    "url": "https://github.com/melvinotieno/n8n-nodes/tree/main/packages/Bcrypt"
+    "url": "https://github.com/melvinotieno/n8n-nodes/tree/main/packages/BCrypt"
   },
   "files": [
     "dist"
   ],
   "scripts": {
     "dev": "tsc --watch",
-    "build": "pnpm rimraf dist && tsc && gulp build:icons",
+    "build": "pnpm rimraf dist && tsc && gulp copy:assets",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
@@ -38,7 +38,7 @@
   "n8n": {
     "n8nNodesApiVersion": 1,
     "nodes": [
-      "dist/Bcrypt.node.js"
+      "dist/BCrypt.node.js"
     ]
   }
 }

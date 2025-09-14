@@ -1,17 +1,17 @@
 import bcrypt from "bcrypt";
 import { NodeConnectionType, NodeOperationError } from "n8n-workflow";
 
-export class Bcrypt implements INodeType {
+export class BCrypt implements INodeType {
 	description: INodeTypeDescription = {
-		displayName: "Bcrypt",
+		displayName: "BCrypt",
 		name: "bcrypt",
-		icon: "file:Bcrypt.node.svg",
+		icon: "file:BCrypt.node.svg",
 		group: ["transform"],
 		version: 1,
 		description: "Password hashing and comparison using bcrypt",
 		subtitle: `={{$parameter.action.charAt(0).toUpperCase() + $parameter.action.slice(1)}}`,
 		defaults: {
-			name: "Bcrypt",
+			name: "BCrypt",
 		},
 		inputs: [NodeConnectionType.Main],
 		outputs: [NodeConnectionType.Main],
