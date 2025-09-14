@@ -1,7 +1,7 @@
 {
   "name": "n8n-nodes-extract-binaries",
-  "version": "0.0.2",
-  "description": "Extract binary files from a webhook request in n8n.",
+  "version": "0.0.3",
+  "description": "Extract binary files from the input node in n8n.",
   "keywords": [
     "n8n-community-node-package",
     "n8n-extract-binaries"
@@ -19,11 +19,12 @@
   ],
   "scripts": {
     "dev": "tsc --watch",
-    "build": "pnpm rimraf dist && tsc && gulp build:icons",
+    "build": "pnpm rimraf dist && tsc && gulp copy:assets",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
     "@config/typescript": "workspace:^",
+    "@types/gulp": "^4.0.17",
     "gulp": "^5.0.1",
     "typescript": "^5.9.2"
   },
