@@ -26,7 +26,7 @@
     "bcrypt": "^6.0.0"
   },
   "devDependencies": {
-    "@config/typescript": "workspace:^",
+    "@repo/config": "workspace:^",
     "@types/bcrypt": "^6.0.0",
     "@types/gulp": "^4.0.17",
     "gulp": "^5.0.1",
