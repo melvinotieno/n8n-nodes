@@ -34,7 +34,7 @@ importers:
         version: 1.82.0
     devDependencies:
       '@repo/config':
-        specifier: workspace:^
+        specifier: workspace:x
         version: link:../../support/config
       '@types/bcrypt':
         specifier: ^6.0.0
@@ -52,14 +52,14 @@ importers:
   packages/ExtractBinaries:
     dependencies:
       '@repo/utilities':
-        specifier: workspace:^
+        specifier: workspace:x
         version: link:../../support/utilities
       n8n-workflow:
         specifier: '*'
         version: 1.82.0
     devDependencies:
       '@repo/config':
-        specifier: workspace:^
+        specifier: workspace:x
         version: link:../../support/config
       '@types/gulp':
         specifier: ^4.0.17
@@ -87,7 +87,7 @@ importers:
         version: 3.2.0
     devDependencies:
       '@repo/config':
-        specifier: workspace:^
+        specifier: workspace:x
         version: link:../../support/config
       '@types/gulp':
         specifier: ^4.0.17
@@ -107,7 +107,7 @@ importers:
   support/utilities:
     devDependencies:
       '@repo/config':
-        specifier: workspace:^
+        specifier: workspace:x
         version: link:../config
       typescript:
         specifier: ^5.9.2
