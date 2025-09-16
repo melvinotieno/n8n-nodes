@@ -18,6 +18,12 @@ declare global {
 	interface IBinariesOptions {
 		mimeTypes?: string;
 		maxSize?: number;
+		includeBinaryField?: boolean;
+	}
+
+	interface IBinariesRejection {
+		mime: boolean;
+		size: boolean;
 	}
 }
 

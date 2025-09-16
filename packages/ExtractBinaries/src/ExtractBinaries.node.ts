@@ -47,6 +47,13 @@ export class ExtractBinaries implements INodeType {
 						default: -1,
 						description: "Max binary file size in bytes. Negative number for no limit.",
 					},
+					{
+						displayName: "Include Binary Field",
+						name: "includeBinaryField",
+						type: "boolean",
+						default: false,
+						description: "Whether to include the original binary field name in the output.",
+					},
 				],
 			},
 		],
@@ -66,7 +73,7 @@ export class ExtractBinaries implements INodeType {
 			const binaryField = this.getNodeParameter("binaryField", itemIndex) as string;
 			const options = this.getNodeParameter("options", itemIndex) as IBinariesOptions;
 
-			const { mimeTypes = "", maxSize = -1 } = options;
+			const { mimeTypes = "", maxSize = -1, includeBinaryField = false } = options;
 
 			const mimes = mimeTypes
 				.split(",")
@@ -80,9 +87,13 @@ export class ExtractBinaries implements INodeType {
 
 				const outputData: INodeExecutionData = {
 					binary: { [binaryField]: binaryData },
-					json: { metadata, originalBinaryField: key },
+					json: { metadata },
 					pairedItem: itemIndex,
 				};
+
+				if (includeBinaryField) {
+					outputData.json.originalBinaryField = key;
+				}
 
 				const isMimeAllowed = mimes.length === 0 || mimes.includes(mimeType);
 				const isSizeAllowed = maxSize <= 0 || parseFileSize(fileSize) <= maxSize;
@@ -90,11 +101,26 @@ export class ExtractBinaries implements INodeType {
 				if (isMimeAllowed && isSizeAllowed) {
 					accepted.push(outputData);
 				} else {
+					const filters: IBinariesRejection = {
+						mime: !isMimeAllowed,
+						size: !isSizeAllowed,
+					};
+
+					outputData.json.reason = ExtractBinaries.prototype.getRejectionReason(filters);
+
 					rejected.push(outputData);
 				}
 			}
 		}
 
 		return [accepted, rejected];
+	}
+
+	private getRejectionReason(filters: IBinariesRejection): string {
+		if (filters.mime) return "MIME type not allowed";
+
+		if (filters.size) return "File size exceeds limit";
+
+		return "Unknown rejection reason";
 	}
 }
