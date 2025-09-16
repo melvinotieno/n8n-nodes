@@ -1,0 +1,14 @@
+{
+	"node": "n8n-nodes-extract-from-document",
+	"nodeVersion": "1.0",
+	"codexVersion": "1.0",
+	"categories": ["Development", "Utility"],
+	"alias": ["Extract", "Document", "Parse", "PDF", "DOCX"],
+	"resources": {
+		"primaryDocumentation": [
+			{
+				"url": "https://github.com/melvinotieno/n8n-nodes/tree/main/packages/ExtractFromDocument/README.md"
+			}
+		]
+	}
+}
