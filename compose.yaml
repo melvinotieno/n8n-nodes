@@ -7,8 +7,9 @@ services:
       - n8n_data:/home/node/.n8n
       - ./packages:/home/node/.n8n/custom
       # Because we are on a pnpm monorepo (hoists packages), we need to mount
-      # the node_modules folder so that n8n can find installed dependencies.
+      # the node_modules and support folder so that n8n can find dependencies.
       - ./node_modules:/home/node/.n8n/node_modules
+      - ./support:/home/node/.n8n/support
     ports:
       - "5678:5678"
 volumes:
