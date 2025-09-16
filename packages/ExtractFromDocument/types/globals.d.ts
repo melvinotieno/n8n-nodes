@@ -1,16 +1,34 @@
 declare global {
-  interface IOptions {
-    mergePages?: boolean;
-    maxPages?: number;
-  }
+	type IAuthenticateGeneric = import("n8n-workflow").IAuthenticateGeneric;
 
-  type IArgs = IOptions;
+	type ICredentialTestRequest = import("n8n-workflow").ICredentialTestRequest;
 
-  interface IExtract {
-    text: string | string[];
-    numpages: number;
-    metadata?: Record<string, any>;
-  }
+	type ICredentialType = import("n8n-workflow").ICredentialType;
+
+	type IExecuteFunctions = import("n8n-workflow").IExecuteFunctions;
+
+	type INodeExecutionData = import("n8n-workflow").INodeExecutionData;
+
+	type INodeProperties = import("n8n-workflow").INodeProperties;
+
+	type INodeType = import("n8n-workflow").INodeType;
+
+	type INodeTypeDescription = import("n8n-workflow").INodeTypeDescription;
+
+	interface IDocumentOptions {
+		mergePages?: boolean;
+		maxPages?: number;
+		password?: string;
+		keepSource?: "json" | "binary" | "both";
+	}
+
+	interface IDocumentExtract {
+		text: string | string[];
+		numpages: number;
+		version?: string;
+		info?: Record<string, unknown>;
+		metadata?: Record<string, unknown>;
+	}
 }
 
 export {};
