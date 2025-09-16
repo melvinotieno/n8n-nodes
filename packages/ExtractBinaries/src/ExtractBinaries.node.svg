@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <path d="M50 17a17 17 0 0 0-17 17v133c0 9 8 17 17 17h100a17 17 0 0 0 17-17V67l-50-50H50zM117 29L154 67h-37V29z" fill="#888"/>
+  <path d="M67 117a17 17 0 1 0 0 33 17 17 0 0 0 0-33zm0 25a8 8 0 1 1 0-17 8 8 0 0 1 0 17zM108 117h8v33h-8v-33zM125 117h8v33h-8v-33z" fill="#888"/>
+  <text x="100" y="95" font-size="20" fill="#222" font-family="monospace" text-anchor="middle">0 1 0</text>
+  <text x="100" y="115" font-size="20" fill="#222" font-family="monospace" text-anchor="middle">1 0 1</text>
+  <text x="100" y="135" font-size="20" fill="#222" font-family="monospace" text-anchor="middle">0 1 1</text>
+</svg>
