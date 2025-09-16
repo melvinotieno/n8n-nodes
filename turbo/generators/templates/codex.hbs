@@ -1,0 +1,21 @@
+{
+	"node": "n8n-nodes-{{ dashCase name }}",
+	"nodeVersion": "1.0",
+	"codexVersion": "1.0",
+	"categories": ["Development"],
+	"alias": [],
+	"resources": {
+    {{#if credentials}}
+    "credentialDocumentation": [
+			{
+				"url": "https://github.com/melvinotieno/n8n-nodes/tree/main/packages/{{ pascalCase name }}/README.md#{{ dashCase name }}-credential"
+			}
+		],
+    {{/if}}
+		"primaryDocumentation": [
+			{
+				"url": "https://github.com/melvinotieno/n8n-nodes/tree/main/packages/{{ pascalCase name }}/README.md"
+			}
+		]
+	}
+}
