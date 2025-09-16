@@ -47,8 +47,18 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
 				},
 				{
 					type: "add",
+					path: "{{ turbo.paths.root }}/packages/{{ pascalCase name }}/README.md",
+					templateFile: "templates/readme.hbs",
+				},
+				{
+					type: "add",
 					path: "{{ turbo.paths.root }}/packages/{{ pascalCase name }}/src/{{ pascalCase name }}.node.ts",
 					templateFile: "templates/node.hbs",
+				},
+				{
+					type: "add",
+					path: "{{ turbo.paths.root }}/packages/{{ pascalCase name }}/src/{{ pascalCase name }}.node.json",
+					templateFile: "templates/codex.hbs",
 				},
 				{
 					type: "add",
