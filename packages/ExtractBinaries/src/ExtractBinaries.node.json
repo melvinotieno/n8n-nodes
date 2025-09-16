@@ -1,0 +1,14 @@
+{
+	"node": "n8n-nodes-extract-binaries",
+	"nodeVersion": "1.0",
+	"codexVersion": "1.0",
+	"categories": ["Development", "Utility"],
+	"alias": ["Extract", "Binary", "File", "Files", "Filter"],
+	"resources": {
+		"primaryDocumentation": [
+			{
+				"url": "https://github.com/melvinotieno/n8n-nodes/tree/main/packages/ExtractBinaries/README.md"
+			}
+		]
+	}
+}
