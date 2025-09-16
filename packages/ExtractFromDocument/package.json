@@ -1,6 +1,6 @@
 {
   "name": "n8n-nodes-extract-from-document",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Extracts text content from documents using n8n.",
   "keywords": [
     "n8n-community-node-package",
@@ -19,7 +19,7 @@
   ],
   "scripts": {
     "dev": "tsc --watch",
-    "build": "pnpm rimraf dist && tsc && gulp build:icons",
+    "build": "pnpm rimraf dist && tsc && gulp copy:assets",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
@@ -28,7 +28,8 @@
     "yauzl": "^3.2.0"
   },
   "devDependencies": {
-    "@config/typescript": "workspace:^",
+    "@repo/config": "workspace:^",
+    "@types/gulp": "^4.0.17",
     "@types/yauzl": "^2.10.3",
     "gulp": "^5.0.1",
     "typescript": "^5.9.2"
