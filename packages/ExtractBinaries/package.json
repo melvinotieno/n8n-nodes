@@ -23,10 +23,10 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@repo/utilities": "workspace:^"
+    "@repo/utilities": "workspace:x"
   },
   "devDependencies": {
-    "@repo/config": "workspace:^",
+    "@repo/config": "workspace:x",
     "@types/gulp": "^4.0.17",
     "gulp": "^5.0.1",
     "typescript": "^5.9.2"
