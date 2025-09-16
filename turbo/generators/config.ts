@@ -32,8 +32,8 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
 			const actions: PlopTypes.Actions = [
 				{
 					type: "add",
-					path: "{{ turbo.paths.root }}/packages/{{ pascalCase name }}/{{ pascalCase name }}.node.ts",
-					templateFile: "templates/node.hbs",
+					path: "{{ turbo.paths.root }}/packages/{{ pascalCase name }}/package.json",
+					templateFile: "templates/package.hbs",
 				},
 				{
 					type: "add",
@@ -42,20 +42,25 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
 				},
 				{
 					type: "add",
-					path: "{{ turbo.paths.root }}/packages/{{ pascalCase name }}/package.json",
-					templateFile: "templates/package.hbs",
+					path: "{{ turbo.paths.root }}/packages/{{ pascalCase name }}/gulpfile.js",
+					templateFile: "templates/gulpfile.hbs",
 				},
 				{
 					type: "add",
-					path: "{{ turbo.paths.root }}/packages/{{ pascalCase name }}/gulpfile.js",
-					templateFile: "templates/gulpfile.hbs",
+					path: "{{ turbo.paths.root }}/packages/{{ pascalCase name }}/src/{{ pascalCase name }}.node.ts",
+					templateFile: "templates/node.hbs",
+				},
+				{
+					type: "add",
+					path: "{{ turbo.paths.root }}/packages/{{ pascalCase name }}/types/globals.d.ts",
+					templateFile: "templates/globals.hbs",
 				},
 			];
 
 			if (data?.credentials) {
 				actions.push({
 					type: "add",
-					path: "{{ turbo.paths.root }}/packages/{{ pascalCase name }}/{{ pascalCase name }}.credentials.ts",
+					path: "{{ turbo.paths.root }}/packages/{{ pascalCase name }}/src/{{ pascalCase name }}.credentials.ts",
 					templateFile: "templates/credentials.hbs",
 				});
 
