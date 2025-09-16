@@ -1,0 +1,115 @@
+import bcrypt from "bcrypt";
+import { NodeConnectionType, NodeOperationError } from "n8n-workflow";
+
+export class BCrypt implements INodeType {
+	description: INodeTypeDescription = {
+		displayName: "BCrypt",
+		name: "bcrypt",
+		icon: "file:BCrypt.node.svg",
+		group: ["transform"],
+		version: 1,
+		description: "Password hashing and comparison using bcrypt",
+		subtitle: `={{$parameter.action.charAt(0).toUpperCase() + $parameter.action.slice(1)}}`,
+		defaults: {
+			name: "BCrypt",
+		},
+		inputs: [NodeConnectionType.Main],
+		outputs: [NodeConnectionType.Main],
+		properties: [
+			{
+				displayName: "Action",
+				name: "action",
+				type: "options",
+				noDataExpression: true,
+				default: "hash",
+				options: [
+					{
+						name: "Hash",
+						value: "hash",
+					},
+					{
+						name: "Compare",
+						value: "compare",
+					},
+				],
+			},
+			{
+				displayName: "Salt Rounds",
+				name: "saltRounds",
+				type: "number",
+				default: 10,
+				displayOptions: {
+					show: {
+						action: ["hash"],
+					},
+				},
+			},
+			{
+				displayName: "Plain Text",
+				name: "plainText",
+				type: "string",
+				default: "",
+			},
+			{
+				displayName: "Hashed Text",
+				name: "hashedText",
+				type: "string",
+				default: "",
+				displayOptions: {
+					show: {
+						action: ["compare"],
+					},
+				},
+			},
+		],
+	};
+
+	async execute(this: IExecuteFunctions): Promise<INodeExecutionData[][]> {
+		const items = this.getInputData();
+		const outputData: INodeExecutionData[] = [];
+
+		const action = this.getNodeParameter("action", 0) as string;
+
+		for (let itemIndex = 0; itemIndex < items.length; itemIndex++) {
+			try {
+				const plainText = this.getNodeParameter("plainText", itemIndex) as string;
+
+				if (action === "hash") {
+					const saltRounds = this.getNodeParameter("saltRounds", itemIndex) as number;
+					const hash = await bcrypt.hash(plainText, saltRounds);
+
+					outputData.push({
+						json: { hash },
+						pairedItem: itemIndex,
+					});
+				}
+
+				if (action === "compare") {
+					const hashedText = this.getNodeParameter("hashedText", itemIndex) as string;
+					const matches = await bcrypt.compare(plainText, hashedText);
+
+					outputData.push({
+						json: { matches },
+						pairedItem: itemIndex,
+					});
+				}
+			} catch (error) {
+				if (this.continueOnFail()) {
+					outputData.push({
+						json: this.getInputData(itemIndex)[0].json,
+						error,
+						pairedItem: itemIndex,
+					});
+
+					continue;
+				}
+
+				throw new NodeOperationError(this.getNode(), error, {
+					itemIndex,
+				});
+			}
+		}
+
+		return [outputData];
+	}
+}

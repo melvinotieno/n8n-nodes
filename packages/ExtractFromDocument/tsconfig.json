@@ -1,7 +1,7 @@
 {
-  "extends": "@config/typescript/base.json",
-  "compilerOptions": {
-    "outDir": "./dist"
-  },
-  "include": ["src", "types"]
+	"extends": "@repo/config/tsconfig.json",
+	"compilerOptions": {
+		"outDir": "./dist"
+	},
+	"include": ["src", "types"]
 }

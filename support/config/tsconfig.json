@@ -1,6 +1,6 @@
 {
-  "compilerOptions": {
-    "strict": true,
+	"compilerOptions": {
+		"strict": true,
 		"module": "commonjs",
 		"moduleResolution": "node",
 		"target": "es2019",
@@ -19,6 +19,6 @@
 		"declaration": true,
 		"sourceMap": true,
 		"skipLibCheck": true
-  },
+	},
 	"exclude": [".turbo", "dist", "node_modules"]
 }

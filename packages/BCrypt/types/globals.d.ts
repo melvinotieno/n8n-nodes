@@ -14,17 +14,6 @@ declare global {
 	type INodeType = import("n8n-workflow").INodeType;
 
 	type INodeTypeDescription = import("n8n-workflow").INodeTypeDescription;
-
-	interface IBinariesOptions {
-		mimeTypes?: string;
-		maxSize?: number;
-		includeBinaryField?: boolean;
-	}
-
-	interface IBinariesRejection {
-		mime: boolean;
-		size: boolean;
-	}
 }
 
 export {};

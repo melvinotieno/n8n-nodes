@@ -1,18 +1,18 @@
 {
-  "name": "n8n-nodes-extract-from-document",
-  "version": "0.0.3",
-  "description": "Extracts text content from documents using n8n.",
+  "name": "n8n-nodes-bcrypt",
+  "version": "0.0.1",
+  "description": "Password hashing and comparison using bcrypt in n8n.",
   "keywords": [
     "n8n-community-node-package",
-    "n8n-extract-from-document"
+    "n8n-bcrypt"
   ],
-  "homepage": "https://github.com/melvinotieno/n8n-nodes/tree/main/packages/ExtractFromDocument",
+  "homepage": "https://github.com/melvinotieno/n8n-nodes/tree/main/packages/BCrypt",
   "bugs": "https://github.com/melvinotieno/n8n-nodes/issues",
   "license": "MIT",
   "author": "Melvin Otieno <o.melvinotieno@gmail.com> (https://melvinotieno.com)",
   "repository": {
     "type": "git",
-    "url": "https://github.com/melvinotieno/n8n-nodes/tree/main/packages/ExtractFromDocument"
+    "url": "https://github.com/melvinotieno/n8n-nodes/tree/main/packages/BCrypt"
   },
   "files": [
     "dist"
@@ -23,14 +23,12 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@xmldom/xmldom": "^0.9.8",
-    "pdfjs-dist": "^5.4.149",
-    "yauzl": "^3.2.0"
+    "bcrypt": "^6.0.0"
   },
   "devDependencies": {
     "@repo/config": "workspace:^",
+    "@types/bcrypt": "^6.0.0",
     "@types/gulp": "^4.0.17",
-    "@types/yauzl": "^2.10.3",
     "gulp": "^5.0.1",
     "typescript": "^5.9.2"
   },
@@ -40,7 +38,7 @@
   "n8n": {
     "n8nNodesApiVersion": 1,
     "nodes": [
-      "dist/ExtractFromDocument.node.js"
+      "dist/BCrypt.node.js"
     ]
   }
 }
