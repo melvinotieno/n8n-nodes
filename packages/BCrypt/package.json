@@ -1,5 +1,5 @@
 {
-  "name": "n8n-nodes-bcrypt",
+  "name": "n8n-nodes-bcrypt-hash",
   "version": "0.0.1",
   "description": "Password hashing and comparison using bcrypt in n8n.",
   "keywords": [
