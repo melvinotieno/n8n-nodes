@@ -19,11 +19,11 @@
   ],
   "scripts": {
     "dev": "tsc --watch",
-    "build": "pnpm rimraf dist && tsc && gulp build:icons",
+    "build": "pnpm rimraf dist && tsc && gulp copy:assets",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
-    "@config/typescript": "workspace:x",
+    "@repo/config": "workspace:^",
     "@types/gulp": "^4.0.17",
     "gulp": "^5.0.1",
     "typescript": "^5.9.2"
