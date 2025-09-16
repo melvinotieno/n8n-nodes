@@ -64,9 +64,3 @@ The node will throw an error if:
 - A password-protected PDF is accessed without the correct password
 
 Enable "Continue on Fail" in the node settings to handle errors gracefully and continue processing other items.
-
-## Resources
-
-- [PDF.js Documentation](https://mozilla.github.io/pdf.js/)
-
----
