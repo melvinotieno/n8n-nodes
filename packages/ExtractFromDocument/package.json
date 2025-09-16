@@ -1,6 +1,6 @@
 {
   "name": "n8n-nodes-extract-from-document",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Extracts text content from documents using n8n.",
   "keywords": [
     "n8n-community-node-package",
@@ -24,12 +24,14 @@
   },
   "dependencies": {
     "@xmldom/xmldom": "^0.9.8",
+    "lodash.unset": "^4.5.2",
     "pdfjs-dist": "^5.4.149",
     "yauzl": "^3.2.0"
   },
   "devDependencies": {
     "@repo/config": "workspace:x",
     "@types/gulp": "^4.0.17",
+    "@types/lodash.unset": "^4.5.9",
     "@types/yauzl": "^2.10.3",
     "gulp": "^5.0.1",
     "typescript": "^5.9.2"
