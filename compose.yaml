@@ -1,5 +1,6 @@
 # This file is meant to be used for testing purposes only.
 # It should not be used as an example of running n8n in production.
+name: n8n-nodes
 services:
   n8n:
     image: docker.n8n.io/n8nio/n8n
