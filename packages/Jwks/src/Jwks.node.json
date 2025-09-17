@@ -5,7 +5,7 @@
 	"categories": ["Development"],
 	"alias": ["JWT", "Token", "Verify"],
 	"resources": {
-    "credentialDocumentation": [
+		"credentialDocumentation": [
 			{
 				"url": "https://github.com/melvinotieno/n8n-nodes/tree/main/packages/Jwks/README.md#jwks-credentials"
 			}
