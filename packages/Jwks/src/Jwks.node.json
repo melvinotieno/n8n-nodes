@@ -1,0 +1,19 @@
+{
+	"node": "n8n-nodes-jwks",
+	"nodeVersion": "1.0",
+	"codexVersion": "1.0",
+	"categories": ["Development"],
+	"alias": ["JWT", "Token", "Verify"],
+	"resources": {
+		"credentialDocumentation": [
+			{
+				"url": "https://github.com/melvinotieno/n8n-nodes/tree/main/packages/Jwks/README.md#jwks-credentials"
+			}
+		],
+		"primaryDocumentation": [
+			{
+				"url": "https://github.com/melvinotieno/n8n-nodes/tree/main/packages/Jwks/README.md"
+			}
+		]
+	}
+}
