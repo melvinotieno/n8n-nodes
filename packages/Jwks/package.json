@@ -1,0 +1,46 @@
+{
+  "name": "n8n-nodes-jwks",
+  "version": "0.0.1",
+  "description": "",
+  "keywords": [
+    "n8n-community-node-package",
+    "n8n-jwks"
+  ],
+  "homepage": "https://github.com/melvinotieno/n8n-nodes/tree/main/packages/Jwks",
+  "bugs": "https://github.com/melvinotieno/n8n-nodes/issues",
+  "license": "MIT",
+  "author": "Melvin Otieno <o.melvinotieno@gmail.com> (https://melvinotieno.com)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/melvinotieno/n8n-nodes/tree/main/packages/Jwks"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "tsc --watch",
+    "build": "pnpm rimraf dist && tsc && gulp copy:assets",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "jose": "^6.1.0"
+  },
+  "devDependencies": {
+    "@repo/config": "workspace:x",
+    "@types/gulp": "^4.0.17",
+    "gulp": "^5.0.1",
+    "typescript": "^5.9.2"
+  },
+  "peerDependencies": {
+    "n8n-workflow": "*"
+  },
+  "n8n": {
+    "n8nNodesApiVersion": 1,
+    "credentials": [
+      "dist/Jwks.credentials.js"
+    ],
+    "nodes": [
+      "dist/Jwks.node.js"
+    ]
+  }
+}

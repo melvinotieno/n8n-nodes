@@ -110,6 +110,9 @@ importers:
 
   packages/Jwks:
     dependencies:
+      jose:
+        specifier: ^6.1.0
+        version: 6.1.0
       n8n-workflow:
         specifier: '*'
         version: 1.82.0
@@ -1406,6 +1409,9 @@ packages:
   jmespath@0.16.0:
     resolution: {integrity: sha512-9FzQjJ7MATs1tSpnco1K6ayiYE3figslrXA72G2HQ/n76RzvYlofyi5QM+iX4YRs/pu3yzxlVQSST23+dMDknw==}
     engines: {node: '>= 0.6.0'}
+
+  jose@6.1.0:
+    resolution: {integrity: sha512-TTQJyoEoKcC1lscpVDCSsVgYzUDg/0Bt3WE//WiTPK6uOCQC2KZS4MpugbMWt/zyjkopgZoXhZuCi00gLudfUA==}
 
   js-base64@3.7.2:
     resolution: {integrity: sha512-NnRs6dsyqUXejqk/yv2aiXlAvOs56sLkX6nUdeaNezI5LFFLlsZjOThmwnrcwh5ZZRwZlCMnVAY3CvhIhoVEKQ==}
@@ -3776,6 +3782,8 @@ snapshots:
       '@isaacs/cliui': 8.0.2
 
   jmespath@0.16.0: {}
+
+  jose@6.1.0: {}
 
   js-base64@3.7.2: {}
 
