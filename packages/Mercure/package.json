@@ -1,7 +1,7 @@
 {
   "name": "n8n-nodes-mercure",
   "version": "0.0.1",
-  "description": "",
+  "description": "Integrates with Mercure real-time protocol.",
   "keywords": [
     "n8n-community-node-package",
     "n8n-mercure"
