@@ -1,18 +1,18 @@
 {
   "name": "n8n-nodes-bcrypt-hash",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Password hashing and comparison using bcrypt in n8n.",
   "keywords": [
     "n8n-community-node-package",
     "n8n-bcrypt"
   ],
-  "homepage": "https://github.com/melvinotieno/n8n-nodes/tree/main/packages/BCrypt",
+  "homepage": "https://github.com/melvinotieno/n8n-nodes/tree/main/packages/Bcrypt",
   "bugs": "https://github.com/melvinotieno/n8n-nodes/issues",
   "license": "MIT",
   "author": "Melvin Otieno <o.melvinotieno@gmail.com> (https://melvinotieno.com)",
   "repository": {
     "type": "git",
-    "url": "https://github.com/melvinotieno/n8n-nodes/tree/main/packages/BCrypt"
+    "url": "https://github.com/melvinotieno/n8n-nodes/tree/main/packages/Bcrypt"
   },
   "files": [
     "dist"
@@ -38,7 +38,7 @@
   "n8n": {
     "n8nNodesApiVersion": 1,
     "nodes": [
-      "dist/BCrypt.node.js"
+      "dist/Bcrypt.node.js"
     ]
   }
 }

@@ -8,7 +8,7 @@
     ],
     "nodes": [
       "Jwks/dist/Jwks.node.js",
-      "BCrypt/dist/BCrypt.node.js",
+      "Bcrypt/dist/Bcrypt.node.js",
       "ExtractFromDocument/dist/ExtractFromDocument.node.js",
       "ExtractBinaries/dist/ExtractBinaries.node.js"
     ]

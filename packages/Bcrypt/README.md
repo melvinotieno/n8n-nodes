@@ -1,6 +1,6 @@
-# BCrypt Node
+# Bcrypt Node
 
-The **BCrypt** node for n8n provides password hashing and verification using the bcrypt package. It is useful for securely storing and comparing passwords or other sensitive data in your workflows.
+The **Bcrypt** node for n8n provides password hashing and verification using the bcrypt package. It is useful for securely storing and comparing passwords or other sensitive data in your workflows.
 
 ## Features
 
@@ -48,6 +48,6 @@ The **BCrypt** node for n8n provides password hashing and verification using the
 
 ## Resources
 
-- [BCrypt Documentation](https://www.npmjs.com/package/bcrypt)
+- [Bcrypt Documentation](https://www.npmjs.com/package/bcrypt)
 
 ---

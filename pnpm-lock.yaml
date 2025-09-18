@@ -24,7 +24,7 @@ importers:
         specifier: ^2.5.6
         version: 2.5.6
 
-  packages/BCrypt:
+  packages/Bcrypt:
     dependencies:
       bcrypt:
         specifier: ^6.0.0

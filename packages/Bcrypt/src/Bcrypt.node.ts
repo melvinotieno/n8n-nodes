@@ -1,24 +1,24 @@
 import bcrypt from "bcrypt";
 import { NodeConnectionType, NodeOperationError } from "n8n-workflow";
 
-export class BCrypt implements INodeType {
+export class Bcrypt implements INodeType {
 	description: INodeTypeDescription = {
-		displayName: "BCrypt",
+		displayName: "Bcrypt",
 		name: "bcrypt",
-		icon: "file:BCrypt.node.svg",
+		icon: "file:Bcrypt.node.svg",
 		group: ["transform"],
 		version: 1,
 		description: "Password hashing and comparison using bcrypt",
-		subtitle: `={{$parameter.action.charAt(0).toUpperCase() + $parameter.action.slice(1)}}`,
+		subtitle: `={{$parameter.operation.charAt(0).toUpperCase() + $parameter.operation.slice(1)}}`,
 		defaults: {
-			name: "BCrypt",
+			name: "Bcrypt",
 		},
 		inputs: [NodeConnectionType.Main],
 		outputs: [NodeConnectionType.Main],
 		properties: [
 			{
-				displayName: "Action",
-				name: "action",
+				displayName: "Operation",
+				name: "operation",
 				type: "options",
 				noDataExpression: true,
 				default: "hash",
@@ -40,7 +40,7 @@ export class BCrypt implements INodeType {
 				default: 10,
 				displayOptions: {
 					show: {
-						action: ["hash"],
+						operation: ["hash"],
 					},
 				},
 			},
@@ -48,16 +48,18 @@ export class BCrypt implements INodeType {
 				displayName: "Plain Text",
 				name: "plainText",
 				type: "string",
+				required: true,
 				default: "",
 			},
 			{
 				displayName: "Hashed Text",
 				name: "hashedText",
 				type: "string",
+				required: true,
 				default: "",
 				displayOptions: {
 					show: {
-						action: ["compare"],
+						operation: ["compare"],
 					},
 				},
 			},
@@ -68,13 +70,13 @@ export class BCrypt implements INodeType {
 		const items = this.getInputData();
 		const outputData: INodeExecutionData[] = [];
 
-		const action = this.getNodeParameter("action", 0) as string;
+		const operation = this.getNodeParameter("operation", 0);
 
 		for (let itemIndex = 0; itemIndex < items.length; itemIndex++) {
 			try {
 				const plainText = this.getNodeParameter("plainText", itemIndex) as string;
 
-				if (action === "hash") {
+				if (operation === "hash") {
 					const saltRounds = this.getNodeParameter("saltRounds", itemIndex) as number;
 					const hash = await bcrypt.hash(plainText, saltRounds);
 
@@ -84,7 +86,7 @@ export class BCrypt implements INodeType {
 					});
 				}
 
-				if (action === "compare") {
+				if (operation === "compare") {
 					const hashedText = this.getNodeParameter("hashedText", itemIndex) as string;
 					const matches = await bcrypt.compare(plainText, hashedText);
 
@@ -104,9 +106,12 @@ export class BCrypt implements INodeType {
 					continue;
 				}
 
-				throw new NodeOperationError(this.getNode(), error, {
-					itemIndex,
-				});
+				if (error.context) {
+					error.context.itemIndex = itemIndex;
+					throw error;
+				}
+
+				throw new NodeOperationError(this.getNode(), error, { itemIndex });
 			}
 		}
 
