@@ -48,6 +48,6 @@ The **Bcrypt** node for n8n provides password hashing and verification using the
 
 ## Resources
 
-- [Bcrypt Documentation](https://www.npmjs.com/package/bcrypt)
+- [`bcrypt` library documentation](https://www.npmjs.com/package/bcrypt)
 
 ---
