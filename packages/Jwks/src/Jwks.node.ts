@@ -1,14 +1,23 @@
 import { createRemoteJWKSet, type JWTVerifyOptions, jwtVerify } from "jose";
 import { NodeConnectionType, NodeOperationError } from "n8n-workflow";
 
+const prettifyOperation = (operation: string) => {
+	if (operation === "verify") {
+		return "Verify a JWT";
+	}
+
+	return operation;
+};
+
 export class Jwks implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: "JWKS",
 		name: "jwks",
+		icon: "file:Jwks.svg",
 		group: ["transform"],
 		version: 1,
 		description: "JWKS",
-		subtitle: `={{$parameter.operation.charAt(0).toUpperCase() + $parameter.operation.slice(1)}}`,
+		subtitle: `={{(${prettifyOperation})($parameter.operation)}}`,
 		defaults: {
 			name: "JWKS",
 		},
@@ -59,7 +68,6 @@ export class Jwks implements INodeType {
 						type: "string",
 						default: "",
 						description: "The expected issuer of the JWT",
-						placeholder: "e.g. https://example.com",
 					},
 					{
 						displayName: "Audience",
@@ -67,7 +75,6 @@ export class Jwks implements INodeType {
 						type: "string",
 						default: "",
 						description: "The expected recipient the JWT is intended for",
-						placeholder: "e.g. https://example.com",
 					},
 					{
 						displayName: "Subject",
@@ -81,7 +88,7 @@ export class Jwks implements INodeType {
 						name: "maxTokenAge",
 						type: "string",
 						default: "",
-						description: "The maximum age of the token in seconds (e.g., '3600' for 1 hour)",
+						description: "The maximum age of the token",
 					},
 				],
 			},
@@ -89,16 +96,29 @@ export class Jwks implements INodeType {
 				displayName: "Options",
 				name: "options",
 				type: "collection",
+				description: "Additional options to be used by the node",
 				placeholder: "Add Option",
 				default: {},
 				options: [
 					{
 						displayName: "Clock Tolerance",
 						name: "clockTolerance",
-						type: "number",
-						typeOptions: { minValue: 0 },
+						type: "string",
 						default: "",
-						description: "The amount of clock skew allowed when verifying the JWT, in seconds.",
+						description: "The amount of clock skew allowed when verifying the JWT",
+					},
+					{
+						displayName: "Required Claims",
+						name: "requiredClaims",
+						type: "multiOptions",
+						description: "List of claims that must be present in the JWT payload",
+						default: [],
+						options: [
+							{ name: "Issuer (iss)", value: "iss" },
+							{ name: "Audience (aud)", value: "aud" },
+							{ name: "Subject (sub)", value: "sub" },
+							{ name: "Issued At (iat)", value: "iat" },
+						],
 					},
 				],
 			},
@@ -117,7 +137,7 @@ export class Jwks implements INodeType {
 				if (operation === "verify") {
 					const token = this.getNodeParameter("token", itemIndex) as string;
 					const claims = this.getNodeParameter("claims", itemIndex, {}) as IJwksClaims;
-					const options = this.getNodeParameter("options", itemIndex, {}) as IDataObject;
+					const options = this.getNodeParameter("options", itemIndex, {}) as IJwksOptions;
 
 					if (!token) {
 						throw new NodeOperationError(this.getNode(), "The JWT token was not provided", {
@@ -129,16 +149,20 @@ export class Jwks implements INodeType {
 					const JWKS = createRemoteJWKSet(new URL(credentials.url));
 
 					const verifyOptions: JWTVerifyOptions = {
-						issuer: claims.issuer || credentials.issuer,
-						audience: claims.audience || credentials.audience,
-						subject: claims.subject || credentials.subject,
-						maxTokenAge: claims.maxTokenAge || credentials.maxTokenAge,
-						clockTolerance: options.clockTolerance ? Number(options.clockTolerance) : undefined,
+						issuer: claims.issuer || credentials.issuer || undefined,
+						audience: claims.audience || credentials.audience || undefined,
+						subject: claims.subject || credentials.subject || undefined,
+						maxTokenAge: claims.maxTokenAge || credentials.maxTokenAge || undefined,
+						clockTolerance: options.clockTolerance || credentials.clockTolerance || undefined,
+						requiredClaims: options.requiredClaims || credentials.requiredClaims || undefined,
 					};
 
 					const { payload } = await jwtVerify(token, JWKS, verifyOptions);
 
-					outputData.push({ json: { payload }, pairedItem: itemIndex });
+					outputData.push({
+						json: { payload },
+						pairedItem: itemIndex,
+					});
 				}
 			} catch (error) {
 				if (this.continueOnFail()) {
@@ -147,6 +171,13 @@ export class Jwks implements INodeType {
 						error,
 						pairedItem: itemIndex,
 					});
+
+					continue;
+				}
+
+				if (error.context) {
+					error.context.itemIndex = itemIndex;
+					throw error;
 				}
 
 				throw new NodeOperationError(this.getNode(), error, { itemIndex });
