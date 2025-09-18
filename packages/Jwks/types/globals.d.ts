@@ -24,7 +24,12 @@ declare global {
 		maxTokenAge?: number | string;
 	}
 
-	interface IJwksCredentials extends IJwksClaims {
+	interface IJwksOptions {
+		clockTolerance?: number;
+		requiredClaims?: string[];
+	}
+
+	interface IJwksCredentials extends IJwksClaims, IJwksOptions {
 		url: string;
 	}
 }
