@@ -25,6 +25,7 @@
   "devDependencies": {
     "@repo/config": "workspace:x",
     "@types/gulp": "^4.0.17",
+    "@types/jsonwebtoken": "^9.0.10",
     "gulp": "^5.0.1",
     "typescript": "^5.9.2"
   },
@@ -39,5 +40,8 @@
     "nodes": [
       "dist/Mercure.node.js"
     ]
+  },
+  "dependencies": {
+    "jsonwebtoken": "^9.0.2"
   }
 }
