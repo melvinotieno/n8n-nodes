@@ -108,16 +108,33 @@ importers:
         specifier: ^5.9.2
         version: 5.9.2
 
-  packages/Mercure:
-    dependencies:
-      jsonwebtoken:
-        specifier: ^9.0.2
-        version: 9.0.2
   packages/Jwks:
     dependencies:
       jose:
         specifier: ^6.1.0
         version: 6.1.0
+      n8n-workflow:
+        specifier: '*'
+        version: 1.82.0
+    devDependencies:
+      '@repo/config':
+        specifier: workspace:x
+        version: link:../../support/config
+      '@types/gulp':
+        specifier: ^4.0.17
+        version: 4.0.17
+      gulp:
+        specifier: ^5.0.1
+        version: 5.0.1
+      typescript:
+        specifier: ^5.9.2
+        version: 5.9.2
+
+  packages/Mercure:
+    dependencies:
+      jsonwebtoken:
+        specifier: ^9.0.2
+        version: 9.0.2
       n8n-workflow:
         specifier: '*'
         version: 1.82.0

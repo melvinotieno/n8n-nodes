@@ -3,19 +3,19 @@
   "private": true,
   "engines": {
     "node": ">=22.14.0",
-    "pnpm": ">=10.16.1"
+    "pnpm": ">=10.20.0"
   },
-  "packageManager": "pnpm@10.16.1",
+  "packageManager": "pnpm@10.20.0",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "dev": "turbo run dev",
     "build": "turbo run build",
     "lint": "biome lint .",
-		"lint:fix": "biome lint --write .",
-		"format": "biome format .",
-		"format:fix": "biome format --write .",
-		"check": "biome check .",
-		"check:fix": "biome check --write .",
+    "lint:fix": "biome lint --write .",
+    "format": "biome format .",
+    "format:fix": "biome format --write .",
+    "check": "biome check .",
+    "check:fix": "biome check --write .",
     "typecheck": "turbo run typecheck",
     "gen:node": "turbo gen n8n-node",
     "release": "turbo run build && changeset version && changeset publish"
