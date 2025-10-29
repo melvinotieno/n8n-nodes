@@ -1,0 +1,19 @@
+{
+	"node": "n8n-nodes-mercure",
+	"nodeVersion": "1.0",
+	"codexVersion": "1.0",
+	"categories": ["Development"],
+	"alias": [],
+	"resources": {
+		"credentialDocumentation": [
+			{
+				"url": "https://github.com/melvinotieno/n8n-nodes/tree/main/packages/Mercure/README.md#mercure-credentials"
+			}
+		],
+		"primaryDocumentation": [
+			{
+				"url": "https://github.com/melvinotieno/n8n-nodes/tree/main/packages/Mercure/README.md"
+			}
+		]
+	}
+}
