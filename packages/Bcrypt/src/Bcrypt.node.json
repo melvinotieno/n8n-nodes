@@ -3,11 +3,11 @@
 	"nodeVersion": "1.0",
 	"codexVersion": "1.0",
 	"categories": ["Development", "Utility"],
-	"alias": ["Hash", "Password", "Encrypt", "BCrypt", "Salt", "Compare"],
+	"alias": ["Hash", "Password", "Encrypt", "Bcrypt", "Salt", "Compare"],
 	"resources": {
 		"primaryDocumentation": [
 			{
-				"url": "https://github.com/melvinotieno/n8n-nodes/tree/main/packages/BCrypt/README.md"
+				"url": "https://github.com/melvinotieno/n8n-nodes/tree/main/packages/Bcrypt/README.md"
 			}
 		]
 	}

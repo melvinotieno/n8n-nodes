@@ -4,11 +4,13 @@
   "n8n": {
     "n8nNodesApiVersion": 1,
     "credentials": [
-      "Mercure/dist/Mercure.credentials.js"
+      "Mercure/dist/Mercure.credentials.js",
+      "Jwks/dist/Jwks.credentials.js"
     ],
     "nodes": [
       "Mercure/dist/Mercure.node.js",
-      "BCrypt/dist/BCrypt.node.js",
+      "Jwks/dist/Jwks.node.js",
+      "Bcrypt/dist/Bcrypt.node.js",
       "ExtractFromDocument/dist/ExtractFromDocument.node.js",
       "ExtractBinaries/dist/ExtractBinaries.node.js"
     ]
