@@ -23,7 +23,7 @@
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
-    "@repo/config": "workspace:^",
+    "@repo/config": "workspace:x",
     "@types/gulp": "^4.0.18",
     "@types/jsonwebtoken": "^9.0.10",
     "gulp": "^5.0.1",

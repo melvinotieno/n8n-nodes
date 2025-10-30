@@ -29,7 +29,7 @@
     "yauzl": "^3.2.0"
   },
   "devDependencies": {
-    "@repo/config": "workspace:^",
+    "@repo/config": "workspace:x",
     "@types/gulp": "^4.0.18",
     "@types/lodash.unset": "^4.5.9",
     "@types/yauzl": "^2.10.3",
