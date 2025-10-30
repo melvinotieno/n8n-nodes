@@ -31,3 +31,7 @@ Create a Mercure credential in n8n to reuse across workflows. Required fields:
 - Hub URL: The base URL to your Mercure hub (for example `https://example.com/`).
 - Publisher JWT Key: The JWT key used to sign publisher tokens.
 - Subscriber JWT Key: The JWT key used to sign subscriber tokens.
+
+## Resources
+
+- [Mercure Official Documentation](https://mercure.rocks/docs)
