@@ -1,6 +1,6 @@
 {
   "name": "n8n-nodes-jwks",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Provides ability to work with JSON Web Key Sets (JWKS).",
   "keywords": [
     "n8n-community-node-package",
@@ -26,10 +26,10 @@
     "jose": "^6.1.0"
   },
   "devDependencies": {
-    "@repo/config": "workspace:x",
-    "@types/gulp": "^4.0.17",
+    "@repo/config": "workspace:^",
+    "@types/gulp": "^4.0.18",
     "gulp": "^5.0.1",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.3"
   },
   "peerDependencies": {
     "n8n-workflow": "*"

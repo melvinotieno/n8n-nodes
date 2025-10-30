@@ -1,6 +1,6 @@
 {
   "name": "n8n-nodes-mercure",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Integrates with Mercure real-time protocol.",
   "keywords": [
     "n8n-community-node-package",
@@ -23,11 +23,11 @@
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
-    "@repo/config": "workspace:x",
-    "@types/gulp": "^4.0.17",
+    "@repo/config": "workspace:^",
+    "@types/gulp": "^4.0.18",
     "@types/jsonwebtoken": "^9.0.10",
     "gulp": "^5.0.1",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.3"
   },
   "peerDependencies": {
     "n8n-workflow": "*"
