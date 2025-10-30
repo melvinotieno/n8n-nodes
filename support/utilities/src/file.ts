@@ -1,3 +1,5 @@
+import crypto from "node:crypto";
+
 /**
  * Parse a human readable file size string into bytes.
  *
@@ -46,11 +48,11 @@ export const parseFileSize = (input: string | number, base: number = 2): number 
 	const match = /^([0-9.,]+)\s*(\w*)$/u.exec(input.toString().trim());
 	if (!match) throw new Error(`Can't interpret ${input || "a blank string"}`);
 
-	const num = parseFloat(match[1].replace(",", "."));
+	const num = Number.parseFloat(match[1].replace(",", "."));
 	const unit = match[2];
 
 	if (Number.isNaN(num) || !Number.isFinite(num)) {
-		throw new Error(`Can't interpret ${input || "a blank string"}`);
+		throw new TypeError(`Can't interpret ${input || "a blank string"}`);
 	}
 
 	if (!unit) return Math.round(num);
@@ -62,4 +64,28 @@ export const parseFileSize = (input: string | number, base: number = 2): number 
 	}
 
 	throw new Error(`${unit} doesn't appear to be a valid unit`);
+};
+
+export const createBinaryHash = (buffer: Buffer, algorithm: string = "sha256"): Promise<string> => {
+	const chunkSize = 1024 * 1024; // 1 MB
+
+	return new Promise((resolve) => {
+		const hash = crypto.createHash(algorithm);
+
+		let offset = 0;
+
+		const step = () => {
+			if (offset >= buffer.length) {
+				resolve(hash.digest("hex"));
+				return;
+			}
+
+			hash.update(buffer.subarray(offset, offset + chunkSize));
+			offset += chunkSize;
+
+			setImmediate(step);
+		};
+
+		step();
+	});
 };
