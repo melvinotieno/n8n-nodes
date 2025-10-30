@@ -1,5 +1,5 @@
-import { parseFileSize } from "@repo/utilities";
-import { NodeConnectionType } from "n8n-workflow";
+import { createBinaryHash, parseFileSize } from "@repo/utilities";
+import { BINARY_ENCODING } from "n8n-workflow";
 
 export class ExtractBinaries implements INodeType {
 	description: INodeTypeDescription = {
@@ -12,8 +12,8 @@ export class ExtractBinaries implements INodeType {
 		defaults: {
 			name: "Extract Binaries",
 		},
-		inputs: [NodeConnectionType.Main],
-		outputs: [NodeConnectionType.Main, NodeConnectionType.Main],
+		inputs: ["main"],
+		outputs: ["main", "main"],
 		outputNames: ["Accepted", "Rejected"],
 		properties: [
 			{
@@ -54,6 +54,13 @@ export class ExtractBinaries implements INodeType {
 						default: false,
 						description: "Whether to include the original binary field name in the output.",
 					},
+					{
+						displayName: "Create Binary Hash",
+						name: "createBinaryHash",
+						type: "boolean",
+						default: false,
+						description: "Whether to create a hash for the binary data.",
+					},
 				],
 			},
 		],
@@ -73,12 +80,12 @@ export class ExtractBinaries implements INodeType {
 			const binaryField = this.getNodeParameter("binaryField", itemIndex) as string;
 			const options = this.getNodeParameter("options", itemIndex) as IBinariesOptions;
 
-			const { mimeTypes = "", maxSize = -1, includeBinaryField = false } = options;
+			const { mimeTypes = "", maxSize = -1 } = options;
 
 			const mimes = mimeTypes
 				.split(",")
 				.map((type) => type.trim())
-				.filter((type) => Boolean(type));
+				.filter(Boolean);
 
 			for (const key in binary) {
 				const binaryData = binary[key];
@@ -91,8 +98,21 @@ export class ExtractBinaries implements INodeType {
 					pairedItem: itemIndex,
 				};
 
-				if (includeBinaryField) {
+				if (options.includeBinaryField) {
 					outputData.json.originalBinaryField = key;
+				}
+
+				if (options.createBinaryHash) {
+					let buffer: Buffer;
+					if (binaryData.id) {
+						const stream = await this.helpers.getBinaryStream(binaryData.id);
+						buffer = await this.helpers.binaryToBuffer(stream);
+					} else {
+						buffer = Buffer.from(binaryData.data, BINARY_ENCODING);
+					}
+
+					const hash = await createBinaryHash(buffer);
+					outputData.json.binaryHash = hash;
 				}
 
 				const isMimeAllowed = mimes.length === 0 || mimes.includes(mimeType);
