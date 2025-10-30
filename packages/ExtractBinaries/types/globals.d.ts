@@ -19,6 +19,7 @@ declare global {
 		mimeTypes?: string;
 		maxSize?: number;
 		includeBinaryField?: boolean;
+		createBinaryHash?: boolean;
 	}
 
 	interface IBinariesRejection {
