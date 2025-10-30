@@ -1,5 +1,5 @@
 import unset from "lodash.unset";
-import { BINARY_ENCODING, deepCopy, NodeConnectionType, NodeOperationError } from "n8n-workflow";
+import { BINARY_ENCODING, deepCopy, NodeOperationError } from "n8n-workflow";
 
 export class ExtractFromDocument implements INodeType {
 	description: INodeTypeDescription = {
@@ -12,8 +12,8 @@ export class ExtractFromDocument implements INodeType {
 		defaults: {
 			name: "Extract from Document",
 		},
-		inputs: [NodeConnectionType.Main],
-		outputs: [NodeConnectionType.Main],
+		inputs: ["main"],
+		outputs: ["main"],
 		properties: [
 			{
 				displayName: "Input Binary Field",
@@ -113,10 +113,10 @@ export class ExtractFromDocument implements INodeType {
 				const item = items[itemIndex];
 				const { keepSource = "json" } = options;
 
-				if (keepSource !== "binary") {
-					outputItem.json = { ...deepCopy(item.json), ...extract };
-				} else {
+				if (keepSource === "binary") {
 					outputItem.json = { ...extract };
+				} else {
+					outputItem.json = { ...deepCopy(item.json), ...extract };
 				}
 
 				if (keepSource === "binary" || keepSource === "both") {

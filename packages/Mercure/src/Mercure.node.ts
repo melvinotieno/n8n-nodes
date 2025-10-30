@@ -1,4 +1,4 @@
-import { NodeConnectionType, NodeOperationError } from "n8n-workflow";
+import { NodeOperationError } from "n8n-workflow";
 import { generatePublisherToken, generateSubscriberToken } from "./utilities/token";
 import { getTopics } from "./utilities/topics";
 
@@ -14,8 +14,8 @@ export class Mercure implements INodeType {
 		defaults: {
 			name: "Mercure",
 		},
-		inputs: [NodeConnectionType.Main],
-		outputs: [NodeConnectionType.Main],
+		inputs: ["main"],
+		outputs: ["main"],
 		credentials: [
 			{
 				name: "mercure",

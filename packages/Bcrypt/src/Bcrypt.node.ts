@@ -1,5 +1,5 @@
 import bcrypt from "bcrypt";
-import { NodeConnectionType, NodeOperationError } from "n8n-workflow";
+import { NodeOperationError } from "n8n-workflow";
 
 export class Bcrypt implements INodeType {
 	description: INodeTypeDescription = {
@@ -13,8 +13,8 @@ export class Bcrypt implements INodeType {
 		defaults: {
 			name: "Bcrypt",
 		},
-		inputs: [NodeConnectionType.Main],
-		outputs: [NodeConnectionType.Main],
+		inputs: ["main"],
+		outputs: ["main"],
 		properties: [
 			{
 				displayName: "Operation",

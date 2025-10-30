@@ -1,5 +1,5 @@
 import { createRemoteJWKSet, type JWTVerifyOptions, jwtVerify } from "jose";
-import { NodeConnectionType, NodeOperationError } from "n8n-workflow";
+import { NodeOperationError } from "n8n-workflow";
 
 const prettifyOperation = (operation: string) => {
 	if (operation === "verify") {
@@ -21,8 +21,8 @@ export class Jwks implements INodeType {
 		defaults: {
 			name: "JWKS",
 		},
-		inputs: [NodeConnectionType.Main],
-		outputs: [NodeConnectionType.Main],
+		inputs: ["main"],
+		outputs: ["main"],
 		credentials: [
 			{
 				name: "jwks",
