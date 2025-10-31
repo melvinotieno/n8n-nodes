@@ -51,9 +51,6 @@ importers:
 
   packages/ExtractBinaries:
     dependencies:
-      '@repo/utilities':
-        specifier: workspace:x
-        version: link:../../support/utilities
       n8n-workflow:
         specifier: '*'
         version: 1.115.0
@@ -64,6 +61,9 @@ importers:
       '@types/gulp':
         specifier: ^4.0.18
         version: 4.0.18
+      '@types/node':
+        specifier: ^24.9.2
+        version: 24.9.2
       gulp:
         specifier: ^5.0.1
         version: 5.0.1
