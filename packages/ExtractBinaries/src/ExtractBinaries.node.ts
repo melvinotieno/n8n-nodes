@@ -1,5 +1,5 @@
-import { createBinaryHash, parseFileSize } from "@repo/utilities";
 import { BINARY_ENCODING } from "n8n-workflow";
+import { createBinaryHash, parseFileSize } from "./utilities";
 
 export class ExtractBinaries implements INodeType {
 	description: INodeTypeDescription = {
